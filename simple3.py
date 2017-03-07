@@ -15,6 +15,7 @@ def grey_color_func(word,font_size,position,orientation,random_state=None,**kwar
 
 d=path.dirname(__file__)
 
+#numpy.array:生成一个数组
 mask=np.array(Image.open(path.join(d,"ka.png")))
 
 text=open(u"santi.txt").read().decode('utf-8')
@@ -32,11 +33,15 @@ wc=WordCloud(font_path=font,max_words=2000,mask=mask,stopwords=stopwords,margin=
 
 default_colors=wc.to_array()
 plt.title("Custom colors")
+#Display an image on the axes 
 plt.imshow(wc.recolor(color_func=grey_color_func,random_state=3))
 wc.to_file("a_new_hope.png")
 plt.axis("off")
+#Creates a new figure
 plt.figure()
 plt.title(u"SanTi-TongJi")
 plt.imshow(default_colors)
+#Convenience method to get or set axis properties
 plt.axis("off")
+#Display a figure
 plt.show() 
